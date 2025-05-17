@@ -1,15 +1,33 @@
-<h1>Wazuh SIEM</h1>
+# Wazuh Server Install Guide (via ProxMox VM)
 
-<h2>Description</h2>
-A central place to find all my Wazuh guides
-<br />
+## Description
+In this guide, I will walk through how to install a **Wazuh all-in-one server** inside a virtual machine (VM) on ProxMox. Wazuh is an open-source security platform that provides threat detection, incident response, integrity monitoring, and compliance management.
 
+---
 
-<h2>Hardware used</h2>
-- <b>Dell T620</b>
+## Program Walk-through
 
+1. **Create a ProxMox VM**:
+   - Follow the [ProxMox VM Install Guide](https://github.com/joshkoo1988/vm-install)
+   - Use Ubuntu Server 22.04 LTS (recommended)
 
-<h2>Guides</h2>
+2. **Update and install required packages** inside the VM:
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   sudo apt install curl unzip apt-transport-https lsb-release gnupg -y
 
--[Wazuh-server-install guide](https://github.com/joshkoo1988/wazuh-server-install) <br/>
--[Wazuh-agent-install guide](https://github.com/joshkoo1988/wazuh-agent-install)
+3. **Download the Wazuh quickstart installer script**:
+   - Be sure to check official documentation for most updated [install shell script](https://documentation.wazuh.com/current/quickstart.html)
+   ```
+   curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+   
+4. Access the Wazuh web interface with https://<WAZUH_DASHBOARD_IP_ADDRESS> and your credentials:
+   
+    Username: admin
+    Password: <ADMIN_PASSWORD>
+
+    - You can find the generated password with the following command
+    ```
+    sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
+
+5. [download appropriate agent installer and follow the steps to link agent to the server that was installed](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html)
