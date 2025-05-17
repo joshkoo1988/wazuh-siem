@@ -11,4 +11,5 @@ A central place to find all my Wazuh guides
 
 <h2>Guides</h2>
 
--[Portainer VM Install Guide](https://github.com/joshkoo1988/portainer-install)
+-[Wazuh-server-install guide](https://github.com/joshkoo1988/wazuh-server-install)
+-[Wazuh-agent-install guide](https://github.com/joshkoo1988/wazuh-agent-install)
